@@ -50,11 +50,13 @@ public class NumbersInterpretationApplication {
             toBeJoinedList2.add(joinStr);
         }
 
+        // Join two lists with fixed and mobile prefix combinations
         List<String> joinedList = Stream.of(toBeJoinedList1, toBeJoinedList2)
                 .distinct()
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
 
+            // Validation of input phone number
             for (String combo : joinedList) {
 
                 if (phoneNumber.toString().startsWith(combo)) {
@@ -90,10 +92,12 @@ public class NumbersInterpretationApplication {
         List<StringBuilder> listOfCombinations = new ArrayList<>();
         List<String> collectMatches = new ArrayList<>();
 
+        // Collect all matches to list
         while (digitsMatcher.find()) {
             collectMatches.add(digitsMatcher.group());
         }
 
+        // Number interpretations
         for (int k = 1; k <= collectMatches.size(); k++) {
 
             StringBuilder newNumber = new StringBuilder(phoneNumber.toString().replaceAll("\\s+", ""));
@@ -122,6 +126,7 @@ public class NumbersInterpretationApplication {
         noDuplicates.clear();
         noDuplicates.addAll(set);
 
+        // Print all interpretations and check validity
         AtomicInteger counter = new AtomicInteger(1);
         noDuplicates.forEach(item -> {
             if (fourteenDigitPhoneValidation.isValidNumber(item) || tenDigitPhoneValidation.isValidNumber(item)) {

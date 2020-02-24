@@ -17,7 +17,7 @@ public class PrefixCodeCombinations {
         // To hold the result
         List<List<String>> result = new ArrayList<>();
 
-        // Recurse (since you tagged the question with recursion ;)
+        // Recurse
         for (List<String> subresult : getCombos(input.substring(1))) {
 
             // Case: Don't split
